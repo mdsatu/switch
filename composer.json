@@ -1,0 +1,19 @@
+{
+    "name": "mdsatu/switch",
+    "description": "Laravel database table active deactivate switch",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "MD Satu",
+            "email": "mdsatu.pro@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "DWK\\Switcher\\": "src/"
+        }
+    },
+    "require": {}
+}
