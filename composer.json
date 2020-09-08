@@ -11,11 +11,13 @@
             "homepage": "https://mdsatu.com"
         }
     ],
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "autoload": {
         "psr-4": {
             "DWK\\Switcher\\": "src/"
         }
     },
-    "require": {}
+    "require": {
+        "php": ">=5.4.0"
+    }
 }
