@@ -2,11 +2,28 @@
 
 Switcher is used to switch database status of specific table to your application. 
 
+
+[GitHub license](https://github.com/mdsatu/switcher/blob/master/LICENSE), [GitHub issues](https://github.com/mdsatu/switcher/laravel-meta-manager/issues)
+
 ## Steps:
 
 * [Install](#install)
 * [Usage](#usage)
 * [Example](#example)
+
+## Requirements
+
+- PHP 5.4 and above
+- jQuery
+
+## Steps:
+
+* [Install](#install)
+* [Configuration](#configuration)
+* [Usage](#usage)
+* [Example](#example)
+* [Maintainers](#maintainers)
+* [License](#license)
 
 
 ### Install
@@ -19,43 +36,48 @@ Run the following to include this package via Composer
 composer require mdsatu/switcher
 ```
 
+#### Laravel 5.5+ uses Package Auto-Discovery, so doesn't require you to manually add the ServiceProvider.
+
+Once download is complete, the next thing you have to do is include the service provider within `config/app.php`.
+
+```php
+'providers' => [
+        DWK\Switcher\SwitcherServiceProvider::class,
+];
+```
+Then run `php artisan vendor:publish --provider="DWK\Switcher\SwitcherServiceProvider"` to get the config of Switcher.
+
+
+### Configuration
+
+Setup default application switcher in `switcher.php` config. (Optional but recommended)
+
 #### Available options:
 
 Option | Description
 --------- | -------
-`robots` | Robots option tells search engines what to follow and what not to follow.
-`revisit_after` | Here you may specify how search engines will re-visit and re-crawl your site.
-`referrer` | Here you may specify how you want other sites to get referrer information from your site.
-`type` | Here you may specify the structure type of your website or a specific page
-`title` | Here you may provide the title of your website or a specific page to help search engines understand it better. 
-`description` | Here you may provide the description of your website or a specific page to help search engines understand it better.
-`image` | Here you may provide the url to the image you want search engines and crawlers to make use of when displaying your website or a specific page page.
-`author` | Here you may provide the author's name you want search engines to make use of when displaying your website or a specific page page.
-`geo_region` | Here you specify the region of your location. This is useful if you have a physical location that is important for your business.
-`geo_position` | Here you specify the geo coordinates of your physical location in longitude and latitude. 
-`twitter_site` | Here you may provide your twitter @username of your account
-`twitter_card` | Here you may specify the way you want crawlers to understand your twitter share type.
-`fb_app_id` | Here you may provide your facebook app id
-`keywords` |  Here you may provide keywords relevant to your website and the specific page.
+`default_column` | Here you may specify the default column name.
+`loader` | Here you may specify loader animation (Optional).
 
 
 
 ### Usage
 
-Once configuration is complete you can then add the below at the meta area of the page you want to include meta tags;
+Once configuration is complete you can then add the above at body end tag to activate the "Switcher". Note that jQuery has installed in your project.
 
 ```php
-@include('meta::manager')
+@include('switcher::code')
 ```
 
-The above will use the predefined configurations to prefill the generated meta tags. However if you chose to define certain options on the fly then you can use the code below.
+Now put this code where you want to preview the "Switch"
 
 
 ```php
-@include('meta::manager', [
-    'title'         => 'My Example Title',
-    'description'   => 'This is my example description',
-    'image'         => 'Url to the image',
+@include('switcher::switch', [
+    'table' => 'users',
+    'data' => $query_data,
+    'column' => 'status', // Optional
+    'id' => 1 // Optional
 ])
 ```
 
@@ -69,14 +91,13 @@ The above will use the predefined configurations to prefill the generated meta t
     <head>
         <meta charset="UTF-8">
         <title>Document</title>
-        @include('meta::manager', [
-            'title'         => 'My Example Title',
-            'description'   => 'This is my example description',
-            'image'         => '',
-        ])
     </head>
     <body>
     
+        @include('switcher::switch', [
+            'table' => 'users',
+            'data' => $query_data
+        ])
     </body>
     </html>
 ```
@@ -85,3 +106,9 @@ The above will use the predefined configurations to prefill the generated meta t
 ### Maintainers
 
 This package is maintained by [MD Satu](http://github.com/mdsatu) and you!
+
+
+
+### License
+
+This package is licensed under the [MIT license](https://github.com/mdsatu/switcher/blob/master/LICENSE).
