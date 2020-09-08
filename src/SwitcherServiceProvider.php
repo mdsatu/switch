@@ -15,19 +15,19 @@ class SwitcherServiceProvider extends ServiceProvider{
     {
         $this->loadViewsFrom(__DIR__.'/views', 'switcher');
 
-        Blade::directive('switcher', function ($expression) {
+        // Blade::directive('switcher', function ($expression) {
 
-            // eval("\$expression = [$expression];");
-            // list($table, $data, $column, $current) = $params;
+        //     // eval("\$expression = [$expression];");
+        //     // list($table, $data, $column, $current) = $params;
 
-            // dd($table);
+        //     // dd($table);
 
-            // $array = json_decode($expression, true);
+        //     // $array = json_decode($expression, true);
 
-            dd($expression);
+        //     dd($expression);
 
-            return '<label class="switch"><input onclick="changeSwitch(`articles`, `status`, 1)" data-id="19" type="checkbox" checked><span class="slider round"></span></label>';
-        });
+        //     return '<label class="switch"><input onclick="changeSwitch(`articles`, `status`, 1)" data-id="19" type="checkbox" checked><span class="slider round"></span></label>';
+        // });
         // $this->loadViewsFrom(__DIR__.'/views', 'meta');
 
         // $this->publishes([
