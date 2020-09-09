@@ -5,12 +5,6 @@ Switcher is used to switch database status of specific table to your application
 
 [GitHub license](https://github.com/mdsatu/switcher/blob/master/LICENSE), [GitHub issues](https://github.com/mdsatu/switcher/laravel-meta-manager/issues)
 
-## Steps:
-
-* [Install](#install)
-* [Usage](#usage)
-* [Example](#example)
-
 ## Requirements
 
 - PHP 5.4 and above

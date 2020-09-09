@@ -3,6 +3,10 @@
     "description": "Laravel database table status switcher",
     "type": "library",
     "license": "MIT",
+    "keywords": [
+        "Switcher",
+        "Switch column value"
+    ],
     "homepage": "https://github.com/mdsatu/switcher",
     "authors": [
         {
