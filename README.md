@@ -1,6 +1,6 @@
 # Switcher
 
-Switcher is used to switch database status of specific table to your application. 
+Switcher is used to easily switch database column status value of a specific table.
 
 
 [GitHub license](https://github.com/mdsatu/switcher/blob/master/LICENSE), [GitHub issues](https://github.com/mdsatu/switcher/laravel-meta-manager/issues)
