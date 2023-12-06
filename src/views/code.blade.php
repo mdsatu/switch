@@ -62,7 +62,7 @@
 /* End Switch Style */
 
 /* Loader Animation */
-.swtch_loader {
+.switch_loader {
 position: fixed;
 top: 0;
 left: 0;
@@ -75,8 +75,7 @@ z-index: 999999;
 color: #fff;
 padding-top: 45vh;
 }
-.swtch_loader img{width: 40px;    -webkit-animation: switch-loader 2s infinite linear;
-    animation: switch-loader 2s infinite linear;}
+.switch_loader img{width: 40px;-webkit-animation: switch-loader 2s infinite linear;animation: switch-loader 2s infinite linear;}
 
 @-webkit-keyframes switch-loader {
     0% {
@@ -109,34 +108,36 @@ padding-top: 45vh;
     }
 @endphp
 
-<div class="swtch_loader" style="display: none;">
+<div class="switch_loader" style="display: none;">
     <img src="{{$loader}}" alt="Loader Animation">
 </div>
 
 <script>
-    // Change Switch
-    $(document).on('change', '.switcher_switch input', function(){
-        let table = $(this).data('table');
-        let column = $(this).data('column');
-        let id = $(this).data('id');
+    function changeSwitcherSwitch(table, column, id){
+        document.querySelector('.switch_loader').style.display = 'block';
 
-        $('.swtch_loader').show();
-        $.ajax({
-            url: "{{route('changeSwitch')}}",
+        let formData = new FormData();
+        formData.append('_token', "{{csrf_token()}}");
+        formData.append('table', table);
+        formData.append('column', column);
+        formData.append('id', id);
+
+        fetch("{{route('changeSwitch')}}", {
             method: 'POST',
-            data: {
-                _token: "{{csrf_token()}}",
-                table,
-                column,
-                id
-            },
-            success: function(){
-                $('.swtch_loader').hide();
-            },
-            error: function(){
-                $('.swtch_loader').hide();
-                alert('Something wrong!');
-            },
+            body: formData
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok!');
+            }
+            return response.text();
+        })
+        .then(() => {
+            document.querySelector('.switch_loader').style.display = 'none';
+        })
+        .catch(() => {
+            document.querySelector('.switch_loader').style.display = 'none';
+            alert('Something wrong!');
         });
-    });
+    }
 </script>

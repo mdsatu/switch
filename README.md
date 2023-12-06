@@ -7,8 +7,8 @@ Switcher is used to easily switch database column status value of a specific tab
 
 ## Requirements
 
-- PHP 5.4 and above
-- jQuery
+- PHP 5.4 or above
+- Laravel 5.5 or above
 
 ## Steps:
 
@@ -29,8 +29,6 @@ Run the following to include this package via Composer
 ```shell
 composer require mdsatu/switcher
 ```
-
-#### Laravel 5.5+ uses Package Auto-Discovery, so doesn't require you to manually add the ServiceProvider.
 
 Once download is complete, the next thing you have to do is include the service provider within `config/app.php`.
 
@@ -57,7 +55,7 @@ Option | Description
 
 ### Usage
 
-Once configuration is complete you can then add the above at body end tag to activate the "Switcher". Note that jQuery has installed in your project.
+Once configuration is complete you can add this code inside the body tag to activate the "Switcher".
 
 ```php
 @include('switcher::code')
@@ -87,7 +85,6 @@ Now put this code where you want to preview the "Switch"
         <title>Document</title>
     </head>
     <body>
-    
         @include('switcher::switch', [
             'table' => 'users',
             'data' => $query_data
@@ -99,7 +96,7 @@ Now put this code where you want to preview the "Switch"
 
 ### Maintainers
 
-This package is maintained by [MD Satu](http://github.com/mdsatu) and you!
+This package is maintained by [MD Satu](https://mdsatu.github.io) and you!
 
 
 
